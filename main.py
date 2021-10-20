@@ -1,6 +1,29 @@
+def has_same_number_of_even_nr(A,B):
+    '''
+    functia numara elementele pare din multimi apoi le compara intre ele
+    :param A:
+    :param B:
+    :return:
+    '''
+    nr1 = 0
+    nr2 = 0
+    for i in A:
+        if i % 2 == 0:
+            nr1 = nr1 + 1
+    for i in B:
+        if i % 2 == 0:
+            nr2 = nr2 + 1
+    if nr1 == nr2:
+        return True
+    return False
 
-
-
+def test_has_same_number_of_even_nr():
+    A = [2,4,7,5,7]
+    B = [2,1,6,3,9,5]
+    assert has_same_number_of_even_nr(A,B) == True
+    A = [2, 4, 6, 5, 7]
+    B = [2, 1, 6, 3, 9, 5]
+    assert has_same_number_of_even_nr(A, B) == False
 
 
 def main():
@@ -23,11 +46,17 @@ def main():
                 e = int(input())
                 B.append(e)
             print(A,B)
+        elif optiune == '2':
+            if has_same_number_of_even_nr(A,B) == True:
+                print('Multimile au acelasi numar de elemente pare.')
+            else:
+                print('Multimile nu au acelasi numar de elemente pare. ')
 
         elif optiune == 'x':
             break
         else:
             print('Optiune Invalida!')
 
+test_has_same_number_of_even_nr()
 main()
 
