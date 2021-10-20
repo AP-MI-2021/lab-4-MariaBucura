@@ -33,13 +33,60 @@ def intersection_of_A_and_B(A,B):
                 AB.append(i)
     return AB
 
+'''
+Functie ajutatoare preluata din tema lab 3 
+'''
+def digit_number(n):
+    '''
+    determinarea numarului de cifre
+    :param n:
+    :return:
+    '''
+    nr = 1
+    while n > 9:
+        n = n // 10
+        nr = nr + 1
+    return nr
+
+def concat_numbers(x,y):
+    '''
+    concatenarea a doua numere
+    :param x:
+    :param y:
+    :return:
+    '''
+    x = x * pow(10, digit_number(y)) + y
+    return x
+
+def is_palindrome(n):
+    aux = n
+    ogl = 0
+    while aux > 0:
+        c = aux % 10
+        ogl = ogl * 10 + c
+        aux = aux // 10
+    if ogl == n:
+        return True
+    return False
+
+def get_palindrome_concat(A, n, B, m):
+    lst = []
+    if n > m:
+        x = m
+    else:
+        x = n
+    for i in range(0, x):
+        concat = concat_numbers(A[i], B[i])
+        if is_palindrome(concat) == True:
+            lst.append(concat)
+    return lst
 
 def main():
     while True:
         print('1. Citire date. ')
         print('2. Verificare daca multimile au acelasi numar de elemente pare')
         print('3. Intersectia multimilor A si B. ')
-        print('4.')
+        print('4. Afisarea palindroamelor obinute prin concatenarea elementelor de pe aceleasi pozitii')
         print('x. Iesire.')
         optiune = input('Alege optiunea: ')
         if optiune == '1':
@@ -67,6 +114,12 @@ def main():
                 print('Nu exista elemente comune intre ele')
             else:
                 print(f'Intersectia dintre cele doua multimi este: {intersection}')
+        elif optiune == '4':
+            y = get_palindrome_concat(A, n, B, m)
+            if y == []:
+                print('Nu exista astfel de elemente')
+            else:
+                print(f'Palindroamele rezultate din concatenare sunt: {y}')
         elif optiune == 'x':
             break
         else:
