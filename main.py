@@ -59,6 +59,11 @@ def concat_numbers(x,y):
     return x
 
 def is_palindrome(n):
+    '''
+    functia verifica daca un numar este palindrom
+    :param n:
+    :return:
+    '''
     aux = n
     ogl = 0
     while aux > 0:
@@ -70,6 +75,11 @@ def is_palindrome(n):
     return False
 
 def get_mirrored(n):
+    '''
+    functia determina oglinditul unui numar
+    :param n:
+    :return:
+    '''
     aux = n
     ogl = 0
     while aux > 0:
