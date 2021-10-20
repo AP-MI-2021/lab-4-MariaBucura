@@ -163,7 +163,11 @@ def main():
             for i in range(0, p):
                 e = int(input())
                 C.append(e)
+            H = A
+            J = B
             modify_lists(A,B,C,n,m)
+            if A == H and J == B:
+                print('listele au ramas nemodificate.')
             print(A,B)
 
         elif optiune == 'x':
