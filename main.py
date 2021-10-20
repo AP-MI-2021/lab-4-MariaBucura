@@ -25,12 +25,20 @@ def test_has_same_number_of_even_nr():
     B = [2, 1, 6, 3, 9, 5]
     assert has_same_number_of_even_nr(A, B) == False
 
+def intersection_of_A_and_B(A,B):
+    AB = []
+    for i in A:
+        for j in B:
+            if i == j:
+                AB.append(i)
+    return AB
+
 
 def main():
     while True:
         print('1. Citire date. ')
-        print('2. Afisarea numerelor intregi din lista')
-        print('3.')
+        print('2. Verificare daca multimile au acelasi numar de elemente pare')
+        print('3. Intersectia multimilor A si B. ')
         print('4.')
         print('x. Iesire.')
         optiune = input('Alege optiunea: ')
@@ -39,9 +47,11 @@ def main():
             B = []
             n = int(input('dimensiune prima multime: '))
             m = int(input('dimensiune a doua multime: '))
+            print('elementele din prima multime: ')
             for i in range(0, n):
                 e = int(input())
                 A.append(e)
+            print('elementele din a doua multime: ')
             for i in range(0, m):
                 e = int(input())
                 B.append(e)
@@ -51,7 +61,12 @@ def main():
                 print('Multimile au acelasi numar de elemente pare.')
             else:
                 print('Multimile nu au acelasi numar de elemente pare. ')
-
+        elif optiune == '3':
+            intersection = intersection_of_A_and_B(A,B)
+            if intersection == []:
+                print('Nu exista elemente comune intre ele')
+            else:
+                print(f'Intersectia dintre cele doua multimi este: {intersection}')
         elif optiune == 'x':
             break
         else:
