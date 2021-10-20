@@ -69,6 +69,15 @@ def is_palindrome(n):
         return True
     return False
 
+def get_mirrored(n):
+    aux = n
+    ogl = 0
+    while aux > 0:
+        c = aux % 10
+        ogl = ogl * 10 + c
+        aux = aux // 10
+    return ogl
+
 def get_palindrome_concat(A, n, B, m):
     lst = []
     if n > m:
@@ -81,12 +90,30 @@ def get_palindrome_concat(A, n, B, m):
             lst.append(concat)
     return lst
 
+def modify_lists(A,B,C,n,m):
+    for i in range(0, n):
+        ok = 1
+        for j in C:
+            if A[i] % j != 0:
+                ok = 0
+        if ok == 1:
+            A[i] = get_mirrored(A[i])
+    for i in range(0, m):
+        ok = 1
+        for j in C:
+            if B[i] % j != 0:
+                ok = 0
+        if ok == 1:
+            B[i] = get_mirrored(B[i])
+
+
 def main():
     while True:
         print('1. Citire date. ')
         print('2. Verificare daca multimile au acelasi numar de elemente pare')
         print('3. Intersectia multimilor A si B. ')
         print('4. Afisarea palindroamelor obinute prin concatenarea elementelor de pe aceleasi pozitii')
+        print('5. Inlocuirea elementelor din lista cu oglinditul lor daca sunt divizibile cu toate elementele din multimea C')
         print('x. Iesire.')
         optiune = input('Alege optiunea: ')
         if optiune == '1':
@@ -120,6 +147,15 @@ def main():
                 print('Nu exista astfel de elemente')
             else:
                 print(f'Palindroamele rezultate din concatenare sunt: {y}')
+        elif optiune == '5':
+            C = []
+            p = int(input('Dimensiunea multimii C'))
+            for i in range(0, p):
+                e = int(input())
+                C.append(e)
+            modify_lists(A,B,C,n,m)
+            print(A,B)
+
         elif optiune == 'x':
             break
         else:
